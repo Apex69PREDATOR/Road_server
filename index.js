@@ -29,9 +29,14 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/get-blogs',async(req,res)=>{
+  try{
     const blog=await BlogModel.find({})
     console.log(blog.length);
-    res.status(200).json({allBlogs:blog})
+    res.status(200).json({allBlogs:blog,message:'List of all constructions'})
+  }
+  catch(err){
+      res.status(404).json({message:"can't get blogs due to server error"})
+  }
 })
 
 app.listen(PORT,()=>{
