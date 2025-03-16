@@ -8,7 +8,8 @@ const BlogStructure=mongoose.Schema({
     image_path:String,
     description:String,
     date:Date,
-    likes:Number
+    likes:{type: Number, default: 0},
+    likedBy:{type:Array,default:[]}
 },{timestamps:true})
 
 const model=mongoose.model('BlogData',BlogStructure)
