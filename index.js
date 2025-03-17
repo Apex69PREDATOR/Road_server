@@ -27,7 +27,9 @@ run();
 
 app.use(express.json())
 app.use(cors())
+app.use(express.urlencoded({extended:true}))
 app.use('/images',express.static('public/images'))
+
 function find_time(time_ms){
    
    let year=(time_ms)/(1000*60*60*24*30*12)
@@ -67,6 +69,7 @@ app.use('/account',require("./Account/signup"))
 app.use('/verify',require("./Account/verify"))
 app.use('/authenticate',require("./Account/login"))
 app.use('/like',require("./UpdateLike"))
+app.use('/post',require("./BlogPost"))
 
 
 
