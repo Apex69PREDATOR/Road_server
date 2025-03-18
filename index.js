@@ -4,10 +4,11 @@ const cors=require("cors")
 const mongoose=require("mongoose")
 const BlogModel=require("./BlogPostsSchema")
 const PORT=5000
+require("dotenv").config()
 
-const db_password=encodeURIComponent("wdDAhKq4LM55Exis")
+const db_password=encodeURIComponent(process.env.MONGODB_ATLAS_PASSWORD)
 const database='ConstructionBlog'
-const uri = `mongodb+srv://arpana036:${db_password}@apex.2k0me.mongodb.net/${database}?retryWrites=true&w=majority&appName=apex`;
+const uri = `mongodb+srv://arpana036:${db_password}@apex.2k0me.mongodb.net/${database}?retryWrites=true&w=majority&appName=${process.env.MONGODB_ATLAS_CLUSTER}`;
 
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
@@ -27,7 +28,7 @@ run();
 
 app.use(express.json())
 app.use(cors({
-  origin:"http://localhost:5173",
+  origin:`${process.env.HTTP_ORIGIN}`,
   methods:["GET","POST","DELETE","PUT"]
 }
 ))
