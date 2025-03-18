@@ -26,7 +26,11 @@ run();
 
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin:"http://localhost:5173",
+  methods:["GET","POST","DELETE","PUT"]
+}
+))
 app.use(express.urlencoded({extended:true}))
 app.use('/images',express.static('public/images'))
 
@@ -50,7 +54,10 @@ function find_time(time_ms){
 }
 app.get('/get-blogs',async(req,res)=>{
   try{
-    const blog=await BlogModel.find({}).sort({date: -1})
+    const type=req.headers.blogtype
+    
+    
+    const blog= type==='null'? await BlogModel.find({}).sort({date: -1}): await BlogModel.find({type:type}).sort({date: -1})
     const blogImages=blog.map(val=>({
       ...val._doc,
       image_url:`http://localhost:5000/images/${val.image_path}`,
