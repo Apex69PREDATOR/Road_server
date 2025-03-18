@@ -2,7 +2,7 @@ const Router=require("express").Router()
 const UserStructure=require("./UserSchema")
 const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken")
-const SECRET='chudirvai'
+const SECRET=process.env.JWT_SECRET
 
 
 function create_token(id){
