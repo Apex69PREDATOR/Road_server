@@ -33,7 +33,10 @@ app.use(cors({
 }
 ))
 app.use(express.urlencoded({extended:true}))
-app.use('/images',express.static('public/images'))
+app.use('/images',(req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); 
+  next();
+},express.static('public/images'))
 
 function find_time(time_ms){
    
