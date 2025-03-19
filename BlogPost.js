@@ -33,7 +33,7 @@ const storage=multer.diskStorage({
         cb(null,"./public/images")
     },
     filename:async function(req,file,cb){
-        const uniqueSyntax=Date.now() + '-' + req.user_id + '-'
+        const uniqueSyntax=Date.now() + '_' + req.user_id + '_'
         cb(null,uniqueSyntax + file.originalname)
         
         
