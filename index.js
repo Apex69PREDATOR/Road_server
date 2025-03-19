@@ -56,7 +56,7 @@ function find_time(time_ms){
 app.get('/',(req,res)=>{
   res.send("<h1>You are not allowed here</h1>")
 })
-app.get('/get-blogs',async(req,res)=>{
+app.post('/get-blogs',async(req,res)=>{
   try{
     const type=req.headers.blogtype
     
