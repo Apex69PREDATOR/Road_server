@@ -64,7 +64,7 @@ app.post('/get-blogs',async(req,res)=>{
     const blog= type==='null'? await BlogModel.find({}).sort({date: -1}): await BlogModel.find({type:type}).sort({date: -1})
     const blogImages=blog.map(val=>({
       ...val._doc,
-      image_url:`http://3.110.46.34:5000/images/${val.image_path}`,
+      image_url:`https://23eb-3-110-46-34.ngrok-free.app/images/${val.image_path}`,
       timePassed: find_time(Date.now() - new Date(val.date).getTime())
     }))
     
