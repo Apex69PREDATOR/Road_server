@@ -28,7 +28,7 @@ run();
 
 app.use(express.json())
 app.use(cors({
-  origin:`${process.env.HTTP_ORIGIN}`,
+  origin:`${process.env.HTTP_ORIGIN_C}`,
   methods:["GET","POST","DELETE","PUT"]
 }
 ))
@@ -67,7 +67,7 @@ app.post('/get-blogs',async(req,res)=>{
     const blog= type==='null'? await BlogModel.find({}).sort({date: -1}): await BlogModel.find({type:type}).sort({date: -1})
     const blogImages=blog.map(val=>({
       ...val._doc,
-      image_url:`http://3.110.46.34:${PORT}/images/${val.image_path}`,
+      image_url:`${process.env.HTTP_ORIGIN_S}/images/${val.image_path}`,
       timePassed: find_time(Date.now() - new Date(val.date).getTime())
     }))
     
@@ -91,10 +91,4 @@ app.listen(PORT,()=>{
     console.log(`http://localhost:${PORT}`);
 })
 
-async function put_blog() {
-  const data=await new BlogModel({name:"rimpa",type:'hotel',location:'universe milkey way hjbh iuikhuk',image_path:'i3.jpg',description:'jvhgvv huvyug ufyuf utyfuiyf uiytyfty iuguy oguiy jkhkkk kuklkn',date:new Date(),likes:0})
-  await data.save()
-  console.log(data);
-  
-}
-// put_blog()
+
