@@ -8,6 +8,7 @@ const BlogStructure=mongoose.Schema({
     image_path:String,
     description:String,
     date:Date,
+    pin:Number,
     likes:{type: Number, default: 0},
     likedBy:{type:Array,default:[]}
 },{timestamps:true})

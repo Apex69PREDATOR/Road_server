@@ -46,7 +46,7 @@ Router.post('/addBlog',upload.single("img_construction"),async(req,res)=>{
   try{
     const user=await UserSchema.findById(req.user_id)
         
-    const blog=await new BlogModel({name:user.fname+user.lname,user_id:req.user_id,type:req.body.type,location:req.body.location,image_path:req.file.filename,description:req.body.description,date:new Date()})
+    const blog=await new BlogModel({name:user.fname+user.lname,user_id:req.user_id,type:req.body.type,location:req.body.location,image_path:req.file.filename,description:req.body.description,date:new Date(),pin:req.body.pin})
     await blog.save()
 
     if(blog)
