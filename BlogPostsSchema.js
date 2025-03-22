@@ -10,7 +10,8 @@ const BlogStructure=mongoose.Schema({
     date:Date,
     pin:Number,
     likes:{type: Number, default: 0},
-    likedBy:{type:Array,default:[]}
+    likedBy:{type:Array,default:[]},
+    CommentedBy:{type:Array,default:[]}
 },{timestamps:true})
 
 const model=mongoose.model('BlogData',BlogStructure)
