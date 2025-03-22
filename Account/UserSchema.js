@@ -3,8 +3,8 @@ const mongoose=require("mongoose")
 const UserStructure=mongoose.Schema({
     fname:String,
     lname:String,
-    phoneno:String,
-    email:String,
+    phoneno:{type:String,unique:true},
+    email:{type:String,unique:true},
     password:String,
     address:String,
 },{timestamps:true})
