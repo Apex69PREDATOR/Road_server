@@ -5,7 +5,7 @@ Router.post('/givecomment',async (req,res)=>{
     try{
     const {uid,bid,uname,comment}=req.body
     const Comment={uid:uid,name:uname,comment:comment}
-    console.log(uid);
+    console.log(uid,uname);
     const upddatedDoc=await BlogModel.findByIdAndUpdate(bid,{
         $push:{CommentedBy:Comment},
     },{new:true})
