@@ -84,6 +84,7 @@ app.use('/verify',require("./Account/verify"))
 app.use('/authenticate',require("./Account/login"))
 app.use('/like',require("./UpdateLike"))
 app.use('/post',require("./BlogPost"))
+app.use('/comment',require("./UpdateComment"))
 
 
 
