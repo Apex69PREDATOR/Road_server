@@ -18,7 +18,7 @@ Router.post('/giveComment',async(req,res)=>{
     return res.status(404).json({message:"try again letter"})
 }
 catch(err){
-    return res.status(500).json({message:"server is facing some issue try again letter"})
+    return res.status(500).json({err:err,message:"server is facing some issue try again letter"})
 }    
 })
 
