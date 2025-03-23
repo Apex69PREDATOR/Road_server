@@ -1,7 +1,7 @@
 const Router=require("express").Router()
 const BlogModel=require("./BlogPostsSchema")
 
-Router.post('/giveComment',async (req,res)=>{
+Router.post('/givecomment',async (req,res)=>{
     try{
     const {uid,bid,uname,comment}=req.body
     const Comment={uid:uid,name:uname,comment:comment}
