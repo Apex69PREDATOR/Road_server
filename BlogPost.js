@@ -6,7 +6,7 @@ Router.use("/addBlog", async (req, res, next) => {
     const token=req.headers.authorization.split(' ')[1]
     
     if(token){
-      const res=await fetch("http://localhost:5000/verify/verifyLogin",{method:"POST",headers:
+      const res=await fetch(`${HTTP_TEST_C}/verify/verifyLogin`,{method:"POST",headers:
         {
          'Authorization': `Bearer ${token}`
         }

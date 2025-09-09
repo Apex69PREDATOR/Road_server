@@ -28,7 +28,7 @@ run();
 
 app.use(express.json())
 app.use(cors({
-  origin:`${process.env.HTTP_ORIGIN_C}`,
+  origin:`${process.env.HTTP_TEST_C}`,
   methods:["GET","POST","DELETE","PUT"]
 }
 ))
